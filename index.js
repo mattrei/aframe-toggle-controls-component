@@ -41,7 +41,6 @@ AFRAME.registerComponent('toggle-controls', {
   init: function () {
     this.clickTimer = null;
     this.onToggle = bind(this.onToggle, this);
-    console.log(data.type)
   },
 
   update: function (oldData) {
