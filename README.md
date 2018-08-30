@@ -10,11 +10,18 @@ For [A-Frame](https://aframe.io).
 
 ### API
 
+Multiple components may be set on the _scene_ entity.
+
 | Property | Description | Default Value |
 | -------- | ----------- | ------------- |
-| enabled | Listen for events | _false_ |
-| toggled | Initial toggled state | _false_ |
-| toggleEv | Initial toggled state | _false_ |
+| enabled | Listen for events | `false` |
+| toggled | Initial toggled state | `false` |
+| toggleEvents | List of events that are used for toggling | `['mousedown', 'touchstart']` |
+| toggleType | Type of the toggle. Either `single` or `double` | `single` |
+| toggleTimeout | The time in milliseconds between to _toggleEvents_ if the _toggleType_ is `double` | `400` |
+| onEvents | Events to be fired when the toggle state is toggled | `[]` |
+| offEvents | Events to be fired when the toggle state is not toggled | `[]` |
+
 
 ### Installation
 
@@ -30,8 +37,7 @@ Install and use by directly including the [browser files](dist):
 </head>
 
 <body>
-  <a-scene>
-    <a-entity toggle-controls="foo: bar"></a-entity>
+  <a-scene toggle-controls="onEvents: toggleOn: offEvents: toggleOff;">
   </a-scene>
 </body>
 ```
