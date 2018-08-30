@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 The MIT License (MIT)
 
 Copyright (c) 2017 Matthias Treitler &lt;matthias.treitler@gmail.com&gt;
+=======
+MIT License
+
+Copyright (c) 2018 Matthias Treitler
+>>>>>>> 1166302a01403a27d60ef60888a67c7b8b9efdc2
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,4 +25,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1166302a01403a27d60ef60888a67c7b8b9efdc2
