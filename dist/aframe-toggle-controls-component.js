@@ -142,11 +142,11 @@ AFRAME.registerComponent('toggle-controls', {
   onToggle: function (event) {
     const data = this.data;
 
+    if (!data.enabled) return;
+
     //  HACK: listen only on events coming from the canvas
     if (event.target.tagName !== 'CANVAS') return;
 
-
-    console.log('event', event)
     if (data.toggleType === 'double') {
       if (this.clickTimer == null) {
         this.clickTimer = setTimeout(() => {
@@ -165,7 +165,6 @@ AFRAME.registerComponent('toggle-controls', {
   _toggle: function () {
 
     const data = this.data;
-    if (!data.enabled) return;
 
     if (this.toggled) {
       emitEvents(this.el, data.offEvents);
