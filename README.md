@@ -16,8 +16,8 @@ Multiple components may be set on the _scene_ entity.
 | -------- | ----------- | ------------- |
 | enabled | Listen for events | `false` |
 | toggled | Initial toggled state | `false` |
-| toggleEvents | List of events that are used for toggling | `['mousedown', 'touchstart']` |
-| toggleType | Type of the toggle. Either `single` or `double` | `single` |
+| events | List of events that are used for toggling | `['mousedown', 'touchstart']` |
+| type | Type of the toggle. Either `single` or `double` | `single` |
 | toggleTimeout | The time in milliseconds between to _toggleEvents_ if the _toggleType_ is `double` | `400` |
 | onEvents | Events to be fired when the toggle state is toggled | `[]` |
 | offEvents | Events to be fired when the toggle state is not toggled | `[]` |

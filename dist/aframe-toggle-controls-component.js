@@ -88,11 +88,11 @@ AFRAME.registerComponent('toggle-controls', {
       default: false,
       type: 'boolean'
     },
-    toggleEvents: {
+    events: {
       type: 'array',
       default: ['mousedown', 'touchstart']
     },
-    toggleType: {
+    type: {
       oneOf: ['single', 'double'],
       default: 'single'
     },
@@ -132,11 +132,11 @@ AFRAME.registerComponent('toggle-controls', {
   },
 
   addEventListeners: function () {
-    addEventListeners(this.el, this.data.toggleEvents, this.onToggle);
+    addEventListeners(this.el, this.data.events, this.onToggle);
   },
 
   removeEventListeners: function () {
-    removeEventListeners(this.el, this.data.toggleEvents, this.onToggle);
+    removeEventListeners(this.el, this.data.events, this.onToggle);
   },
 
   onToggle: function (event) {
@@ -147,7 +147,7 @@ AFRAME.registerComponent('toggle-controls', {
     //  HACK: listen only on events coming from the canvas
     if (event.target.tagName !== 'CANVAS') return;
 
-    if (data.toggleType === 'double') {
+    if (data.type === 'double') {
       if (this.clickTimer == null) {
         this.clickTimer = setTimeout(() => {
           this.clickTimer = null;
