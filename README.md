@@ -4,7 +4,7 @@
 [![License](http://img.shields.io/npm/l/aframe-toggle-controls-component.svg?style=flat-square)](https://npmjs.org/package/aframe-toggle-controls-component)
 
 A Toggle Controls component for A-Frame.
-Toggle is _touch_ and mouse click or by any other event, like from the input mapping.
+Toggle is _touch_ and mouse click or by any other event, like from the input mapping or keydown events.
 
 For [A-Frame](https://aframe.io).
 
@@ -16,7 +16,7 @@ Multiple components may be set on the _scene_ entity.
 | -------- | ----------- | ------------- |
 | enabled | Listen for events | `false` |
 | toggled | Initial toggled state | `false` |
-| events | List of events that are used for toggling | `['mousedown', 'touchstart']` |
+| events | List of events that are used for toggling | `[]` |
 | type | Type of the toggle. Either `single` or `double` | `single` |
 | toggleTimeout | The time in milliseconds between to _toggleEvents_ if the _toggleType_ is `double` | `400` |
 | onEvents | Events to be fired when the toggle state is toggled | `[]` |
@@ -32,7 +32,7 @@ Install and use by directly including the [browser files](dist):
 ```html
 <head>
   <title>My A-Frame Scene</title>
-  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-toggle-controls-component/dist/aframe-toggle-controls-component.min.js"></script>
 </head>
 

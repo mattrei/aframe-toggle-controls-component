@@ -90,7 +90,7 @@ AFRAME.registerComponent('toggle-controls', {
     },
     events: {
       type: 'array',
-      default: ['mousedown', 'touchstart']
+      default: []
     },
     type: {
       oneOf: ['single', 'double'],
@@ -139,26 +139,30 @@ AFRAME.registerComponent('toggle-controls', {
     removeEventListeners(this.el, this.data.events, this.onToggle);
   },
 
-  onToggle: function (event) {
+  onToggle: function (evt) {
     const data = this.data;
 
     if (!data.enabled) return;
 
     //  HACK: listen only on events coming from the canvas
-    if (event.target.tagName !== 'CANVAS') return;
-
-    if (data.type === 'double') {
-      if (this.clickTimer == null) {
-        this.clickTimer = setTimeout(() => {
+    if (
+      evt.target.tagName === 'CANVAS' 
+      || evt.target.tagName === 'A-SCENE'
+      || evt.target.tagName === 'BODY'
+    ) { 
+      if (data.type === 'double') {
+        if (this.clickTimer == null) {
+          this.clickTimer = setTimeout(() => {
+            this.clickTimer = null;
+          }, data.toggleTimeout);
+        } else {
+          clearTimeout(this.clickTimer);
           this.clickTimer = null;
-        }, data.toggleTimeout);
+          this._toggle();
+        }
       } else {
-        clearTimeout(this.clickTimer);
-        this.clickTimer = null;
         this._toggle();
       }
-    } else {
-      this._toggle();
     }
   },
 
@@ -188,14 +192,24 @@ function emitEvents (el, eventNames) {
 function addEventListeners (el, eventNames, handler) {
   var i;
   for (i = 0; i < eventNames.length; i++) {
-    el.addEventListener(eventNames[i], handler);
+    const eventName = eventNames[i];
+    if (eventName.includes('key')) {
+      window.addEventListener(eventName, handler);
+    } else {
+      el.addEventListener(eventName, handler);
+    }
   }
 }
 
 function removeEventListeners (el, eventNames, handler) {
   var i;
   for (i = 0; i < eventNames.length; i++) {
-    el.removeEventListener(eventNames[i], handler);
+    const eventName = eventNames[i];
+    if (eventName.includes('key')) {
+      window.removeEventListener(eventName, handler);
+    } else {
+      el.removeEventListener(eventName, handler);
+    }
   }
 }
 

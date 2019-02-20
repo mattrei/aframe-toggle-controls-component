@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <title>A-Frame Toggle Controls Component - Basic</title>
     <meta name="description" content="Basic example for Toggle Controls component."></meta>
-    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
     <script src="../../dist/aframe-toggle-controls-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-button-controls/aframe-button-controls.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script>
 
       AFRAME.registerComponent('listen-toggle-events', {
@@ -15,6 +16,11 @@
           this.el.addEventListener('singleOff', evt => console.log('singleOff'));
           this.el.addEventListener('doubleOn', evt => console.log('doubleOn'));
           this.el.addEventListener('doubleOff', evt => console.log('doubleOff'));
+
+          this.el.addEventListener('keyOn', evt => console.log('keyOn', evt));
+          this.el.addEventListener('keyOff', evt => console.log('keyOff', evt));
+          this.el.addEventListener('buttonOn', evt => console.log('buttonOn'));
+          this.el.addEventListener('buttonOff', evt => console.log('buttonOff'));
         }
       })
 
@@ -22,10 +28,14 @@
   </head>
   <body>
     <a-scene environment="preset: forest"
-             toggle-controls__single="onEvents: singleOn; offEvents: singleOff;"
-             toggle-controls__double="onEvents: doubleOn; offEvents: doubleOff; type: double"
+             button-controls
+             toggle-controls__single="events: mousedown; onEvents: singleOn; offEvents: singleOff;"
+             toggle-controls__double="events: mousedown; onEvents: doubleOn; offEvents: doubleOff; type: double"
+             toggle-controls__key="events: keydown; onEvents: keyOn; offEvents: keyOff; type: single"
+             toggle-controls__button="events: buttondown; onEvents: buttonOn; offEvents: buttonOff; type: single"
              listen-toggle-events
              >
+
 
         <a-camera>
           <a-cursor>
