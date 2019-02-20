@@ -33,6 +33,9 @@ AFRAME.registerComponent('toggle-controls', {
     toggleTimeout: {
       type: 'int',
       default: 400
+    },
+    eventCond: {
+      default: ''
     }
   },
 
@@ -44,7 +47,9 @@ AFRAME.registerComponent('toggle-controls', {
   },
 
   update: function (oldData) {
-    this.toggled = this.data.toggled;
+    const data = this.data;
+    this.toggled =data.toggled;
+    this.eventCond = data.eventCond && data.eventCond.split('=').length == 2 ? data.eventCond.split('=') : null;
   },
 
   play: function () {
@@ -71,6 +76,9 @@ AFRAME.registerComponent('toggle-controls', {
     const data = this.data;
 
     if (!data.enabled) return;
+    if (this.eventCond) {
+      if (evt[this.eventCond[0]] !== this.eventCond[1]) return;
+    }
 
     //  HACK: listen only on events coming from the canvas
     if (

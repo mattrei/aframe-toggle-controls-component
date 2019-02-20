@@ -21,6 +21,7 @@ Multiple components may be set on the _scene_ entity.
 | toggleTimeout | The time in milliseconds between to _toggleEvents_ if the _toggleType_ is `double` | `400` |
 | onEvents | Events to be fired when the toggle state is toggled | `[]` |
 | offEvents | Events to be fired when the toggle state is not toggled | `[]` |
+| eventCond | Check the specific event if the key meets the value. Format `key=value`, like `keyCode=Space` | `` |
 
 
 ### Installation
