@@ -48,7 +48,7 @@ AFRAME.registerComponent('toggle-controls', {
 
   update: function (oldData) {
     const data = this.data;
-    this.toggled =data.toggled;
+    this.toggled = data.toggled;
     this.eventCond = data.eventCond && data.eventCond.split('=').length == 2 ? data.eventCond.split('=') : null;
   },
 
@@ -80,11 +80,14 @@ AFRAME.registerComponent('toggle-controls', {
       if (evt[this.eventCond[0]] !== this.eventCond[1]) return;
     }
 
-    //  HACK: listen only on events coming from the canvas
     if (
+      evt.target.tagName === 'A-ENTITY' 
+      || evt.target.tagName === 'A-SCENE'
+      /*
       evt.target.tagName === 'CANVAS' 
       || evt.target.tagName === 'A-SCENE'
       || evt.target.tagName === 'BODY'
+      */
     ) { 
       if (data.type === 'double') {
         if (this.clickTimer == null) {
